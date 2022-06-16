@@ -3,7 +3,7 @@
         <base-card>
             <header>
                 <h3>{{ resource.title }}</h3>
-                <button class="btn btn-sm btn-danger">Delete</button>
+                <base-button mode="btn-danger">Delete</base-button>
             </header>
             <p>{{ resource.description }}</p>
             <nav>
@@ -53,6 +53,7 @@ export default {
     h3 {
       font-size: 1.25rem;
       margin: 0.5rem 0;
+      color: #932828;
     }
 
     p {
