@@ -13,7 +13,7 @@
 
     export default {
         components: { LearningResource },
-        props: {
+        inject: {
             resources: {
                 type: Array,
                 required: true,

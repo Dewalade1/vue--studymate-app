@@ -1,0 +1,3 @@
+<template>
+    <h2>Add a new Resource</h2>
+</template>

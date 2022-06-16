@@ -1,32 +1,14 @@
 <template>
     <the-header title="StudyMate"></the-header>
-    <stored-resources :resources="storedResources"></stored-resources>
+    <the-resource></the-resource>
 </template>
 
 <script>
     import TheHeader from './components/layouts/TheHeader/TheHeader.vue';
-    import StoredResources from './components/resources/StoredResources/StoredResources.vue'
+    import TheResource from './components/resources/TheResource/TheResource.vue';
 
     export default {
-        data() {
-            return {
-                storedResources: [
-                    {
-                        id: "official-guide",
-                        title: "Official Guide",
-                        description: "The official Vue.js learning guide",
-                        link: "https://veujs.org"
-                    },
-                    {
-                        id: "google",
-                        title: "Google",
-                        description: "Search engine for finding more learning resources on the web",
-                        link: "https://google.org"
-                    }
-                ]
-            }
-        },
-        components: { StoredResources, TheHeader }
+        components: { TheHeader, TheResource }
     }
 </script>
 
