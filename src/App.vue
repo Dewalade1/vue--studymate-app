@@ -1,8 +1,10 @@
 <template>
+    <the-header title="StudyMate"></the-header>
     <stored-resources :resources="storedResources"></stored-resources>
 </template>
 
 <script>
+    import TheHeader from './components/layouts/TheHeader/TheHeader.vue';
     import StoredResources from './components/resources/StoredResources/StoredResources.vue'
 
     export default {
@@ -24,7 +26,7 @@
                 ]
             }
         },
-        components: { StoredResources }
+        components: { StoredResources, TheHeader }
     }
 </script>
 
