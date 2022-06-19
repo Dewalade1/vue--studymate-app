@@ -1,26 +1,28 @@
 <template>
-    <div id="toast-bg" :class="toastBgCls" @click="$emit('handle-close')"></div>
-    <div class="position-fixed top-0 end-0 p-3 toast-wrapper">
-        <div :id="id" class="toast" :class="mainCls" :role="role" aria-live="assertive" aria-atomic="true">
-            <header class="toast-header" :class="headerCls">
-                <slot name="header">
-                    <!-- <img src="..." class="rounded me-2" alt="..." /> -->
-                    <strong class="me-auto">{{ title }}</strong>
-                </slot>
-                <small>{{ timeSinceIssue }} minute ago</small>
-                <button 
-                    type="button" 
-                    class="btn-close" 
-                    aria-label="Close"
-                    @click="$emit('handle-close')"
-                ></button>
-            </header>
-            <section class="toast-body">
-                <slot></slot>
-            </section>
-            <slot name="actions"></slot>
+    <teleport to="body">
+        <div id="toast-bg" :class="toastBgCls" @click="$emit('handle-close')"></div>
+        <div class="position-fixed top-0 end-0 p-3 toast-wrapper">
+            <div :id="id" class="toast" :class="mainCls" :role="role" aria-live="assertive" aria-atomic="true">
+                <header class="toast-header" :class="headerCls">
+                    <slot name="header">
+                        <!-- <img src="..." class="rounded me-2" alt="..." /> -->
+                        <strong class="me-auto">{{ title }}</strong>
+                    </slot>
+                    <small>{{ timeSinceIssue }} minute ago</small>
+                    <button 
+                        type="button" 
+                        class="btn-close" 
+                        aria-label="Close"
+                        @click="$emit('handle-close')"
+                    ></button>
+                </header>
+                <section class="toast-body">
+                    <slot></slot>
+                </section>
+                <slot name="actions"></slot>
+            </div>
         </div>
-    </div>
+    </teleport>
 </template>
 
 <script>
