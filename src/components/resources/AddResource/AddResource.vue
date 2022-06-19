@@ -1,4 +1,15 @@
 <template>
+    <base-dialog id="formErrorDialog" :show="inputInvalid" title="Invalid Input" @handle-close="handleClose">
+        <template #default>
+            <p>An input is invalid</p>
+            <p>Please make sure all inputs are filled</p>
+        </template>
+        <!-- <template #actions> -->
+            <!-- <menu class="mt-0 pt-2 border-top ps-2"> -->
+                <!-- <base-button @click="handleClose">Close</base-button> -->
+            <!-- </menu> -->
+        <!-- </template> -->
+    </base-dialog>
     <base-card>
         <form @submit.prevent="handleSubmit">
             <div class="form-floating mb-3">
@@ -38,11 +49,9 @@
                 <label for="description">Description</label>
             </div>
 
-            <div>
-                <base-button mode="btn-dark" type="submit">
-                    Add Resource
-                </base-button>
-            </div>
+            <base-button id="formErrorDialogBtn" mode="btn-dark" type="submit">
+                Add Resource
+            </base-button>
         </form>
     </base-card>
 </template>
@@ -50,6 +59,11 @@
 <script>
 export default {
     inject: [ 'addResource' ],
+    data(){
+        return {
+            inputInvalid: false
+        }
+    },
     methods: {
         handleSubmit () {
             const newResource = {
@@ -59,7 +73,19 @@ export default {
                 id: new Date().toISOString()
             }
 
+            Object.keys(newResource).map(key => {
+                if (newResource[key].trim() === "") {
+                    this.inputInvalid = true;
+                    return;
+                }
+            })
+
+            if (this.inputInvalid) return;
+
             this.addResource(newResource)
+        },
+        handleClose () {
+            this.inputInvalid = false;
         }
     }
 }

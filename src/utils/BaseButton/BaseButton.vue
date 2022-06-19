@@ -1,5 +1,5 @@
-<template>:
-    <button :type="type" class="btn btn--sm" :class="mode">
+<template>
+    <button :type="type" :id="id" class="btn btn-sm" :class="mode">
         <slot></slot>
     </button>
 </template>
@@ -12,16 +12,21 @@ export default {
             required: false,
             default: "",
             validator (value) {
-                if (typeof value == "string") return true;
-                return false;
+                typeof value == "string" ? true : false;
             }
         },
         mode: {
             type: String,
             default: "btn-danger",
             validator (value) {
-                if (typeof value == "string") return true;
-                return false;
+                typeof value == "string" ? true : false;
+            }
+        },
+        id: {
+            type: String,
+            default: "",
+            validator (value) {
+                typeof value == "string" ? true : false;
             }
         }
     }
