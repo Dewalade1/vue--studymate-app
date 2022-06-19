@@ -1,35 +1,31 @@
 <template>
-    <ul>
-        <learning-resource  
-            v-for="resource in learningResources" 
-            :resource="resource"
-            :key="resource.id"
-        ></learning-resource>
-    </ul>
+    <the-header title="StudyMate"></the-header>
+    <the-resource></the-resource>
+    <the-footer></the-footer>
 </template>
 
 <script>
-    import LearningResource from "./components/resources/LearningResource/LearningResource.vue";
+    import TheFooter from './components/layouts/TheFooter/TheFooter.vue';
+    import TheHeader from './components/layouts/TheHeader/TheHeader.vue';
+    import TheResource from './components/resources/TheResource/TheResource.vue';
 
     export default {
-        data() {
-            return {
-                learningResources: [
-                    {
-                        id: "official-guide",
-                        title: "Official Guide",
-                        description: "The official Vue.js learning guide",
-                        link: "https://veujs.org"
-                    },
-                    {
-                        id: "google",
-                        title: "Google",
-                        description: "Search engine for finding more learning resources on the web",
-                        link: "https://google.org"
-                    }
-                ]
-            }
-        },
-        components: { LearningResource }
+        components: { TheHeader, TheResource, TheFooter }
     }
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+</style>
