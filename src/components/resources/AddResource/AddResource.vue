@@ -83,6 +83,10 @@ export default {
             if (this.inputInvalid) return;
 
             this.addResource(newResource)
+
+            this.$refs.titleInput.value = "";
+            this.$refs.linkInput.value = "";
+            this.$refs.descInput.value = "";
         },
         handleClose () {
             this.inputInvalid = false;

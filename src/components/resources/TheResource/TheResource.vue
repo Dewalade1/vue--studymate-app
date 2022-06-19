@@ -55,7 +55,8 @@
         provide() {
             return {
                 resources: this.storedResources,
-                addResource: this.addResource
+                addResource: this.addResource,
+                deleteResource: this.deleteResource
             }
         },
         methods: {
@@ -65,6 +66,10 @@
             addResource (newResource) {
                 this.storedResources.unshift({ ...newResource })
                 this.currentTab = 'stored-resources';
+            },
+            deleteResource (resID) {
+                const resIndex = this.storedResources.findIndex(res => res.id === resID)
+                this.storedResources.splice(resIndex, 1)
             }
         },
         computed: {

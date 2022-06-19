@@ -1,4 +1,5 @@
 <template>
+    <div id="toast-bg" :class="toastBgCls" @click="$emit('handle-close')"></div>
     <div class="position-fixed top-0 end-0 p-3 toast-wrapper">
         <div :id="id" class="toast" :class="mainCls" :role="role" aria-live="assertive" aria-atomic="true">
             <header class="toast-header" :class="headerCls">
@@ -79,17 +80,33 @@
             },
             headerCls () {
                 return { "bg-danger": this.type === "error" }
-            }
+            },
+            toastBgCls () {
+                return { 
+                    'd-none': !this.show, 
+                    'd-block': this.show,
+                }
+            },
         },
     }
 </script>
 
 <style scoped>
     .toast-wrapper {
-        z-index: 11
+        z-index: 11;
     }
 
     .bg-danger {
         color: white;
+    }
+
+    #toast-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.70);
+        z-index: 8;
     }
 </style>
