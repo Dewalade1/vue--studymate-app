@@ -41,25 +41,30 @@
                         id: "official-guide",
                         title: "Official Guide",
                         description: "The official Vue.js learning guide",
-                        link: "https://veujs.org"
+                        link: "https://www.veujs.org"
                     },
                     {
                         id: "google",
                         title: "Google",
                         description: "Search engine for finding more learning resources on the web",
-                        link: "https://google.org"
+                        link: "https://www.google.org"
                     }
                 ]
             }
         },
         provide() {
             return {
-                resources: this.storedResources
+                resources: this.storedResources,
+                addResource: this.addResource
             }
         },
         methods: {
             changeTab(tab) {
                 this.currentTab = tab;
+            },
+            addResource (newResource) {
+                this.storedResources.unshift({ ...newResource })
+                this.currentTab = 'stored-resources';
             }
         },
         computed: {

@@ -7,7 +7,7 @@
             </header>
             <p>{{ resource.description }}</p>
             <nav>
-                <a :href="resource.link">View Resource -></a>
+                <a target="_blank" :href="resource.link">View Resource -></a>
             </nav>
         </base-card>
     </li>
